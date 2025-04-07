@@ -1,0 +1,10 @@
+#friendship-container {
+	padding: 20px;
+}
+#friendship-container .friendship-form {
+	margin-bottom: 30px;
+}
+#friendHeadpic {
+	height: 70px;
+	width: 70px;
+}
