@@ -1,0 +1,41 @@
+"filename", "language", "JSON", "TypeScript JSX", "CSS", "YAML", "TypeScript", "comment", "blank", "total"
+"c:\Users\user\Desktop\项目\chat-frontend\package.json", "JSON", 1, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\user\Desktop\项目\chat-frontend\pnpm-lock.yaml", "YAML", 0, 0, 0, 3, 0, 0, 0, 3
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Add_Main\index.tsx", "TypeScript JSX", 0, 48, 0, 0, 0, 0, 3, 51
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Chat_Main\index.tsx", "TypeScript JSX", 0, 19, 0, 0, 0, 16, -5, 30
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Chat_Main\style.ts", "TypeScript", 0, 0, 0, 0, -2, 3, 0, 1
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Collection\index.tsx", "TypeScript JSX", 0, 28, 0, 0, 0, 6, -1, 33
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\ContactList\FiriendCard\index.tsx", "TypeScript JSX", 0, -60, 0, 0, 0, 0, -2, -62
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\ContactList\index.tsx", "TypeScript JSX", 0, -116, 0, 0, 0, -7, -9, -132
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\FR_notification\index.tsx", "TypeScript JSX", 0, 36, 0, 0, 0, 6, -4, 38
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Friendship\ContactList\FiriendCard\index.tsx", "TypeScript JSX", 0, 90, 0, 0, 0, 2, 4, 96
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Friendship\ContactList\index.tsx", "TypeScript JSX", 0, 136, 0, 0, 0, 7, 10, 153
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Group\GroupList\GroupCard\index.tsx", "TypeScript JSX", 0, 27, 0, 0, 0, 0, 1, 28
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Group\GroupList\index.tsx", "TypeScript JSX", 0, 15, 0, 0, 0, 0, 0, 15
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Group\JoinGroupModal.tsx", "TypeScript JSX", 0, 52, 0, 0, 0, 0, 10, 62
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Register_Main\UpdatePassword\index.css", "CSS", 0, 0, 12, 0, 0, 0, 1, 13
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Register_Main\UpdatePassword\index.tsx", "TypeScript JSX", 0, 105, 0, 0, 0, 0, 13, 118
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Self_Main\HeadPicUpload.tsx", "TypeScript JSX", 0, 53, 0, 0, 0, 6, 7, 66
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Self_Main\UpdateInfo.tsx", "TypeScript JSX", 0, 128, 0, 0, 0, 0, 15, 143
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\Self_Main\userCard\index.tsx", "TypeScript JSX", 0, 56, 0, 0, 0, 0, 4, 60
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\TopBar\Create.tsx", "TypeScript JSX", 0, 71, 0, 0, 0, 0, 1, 72
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\TopBar\index.tsx", "TypeScript JSX", 0, 2, 0, 0, 0, 0, 1, 3
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\TopBar\searchBar.tsx", "TypeScript JSX", 0, 101, 0, 0, 0, 5, 5, 111
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\UpdateInfo\HeadPicUpload.tsx", "TypeScript JSX", 0, -53, 0, 0, 0, -6, -7, -66
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\UpdateInfo\index.css", "CSS", 0, 0, -12, 0, 0, 0, -1, -13
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\UpdateInfo\index.tsx", "TypeScript JSX", 0, -106, 0, 0, 0, 0, -15, -121
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\UpdatePassword\index.css", "CSS", 0, 0, -12, 0, 0, 0, -1, -13
+"c:\Users\user\Desktop\项目\chat-frontend\src\components\UpdatePassword\index.tsx", "TypeScript JSX", 0, -105, 0, 0, 0, 0, -13, -118
+"c:\Users\user\Desktop\项目\chat-frontend\src\main.tsx", "TypeScript JSX", 0, 17, 0, 0, 0, 1, 0, 18
+"c:\Users\user\Desktop\项目\chat-frontend\src\router\index.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 0, 0, 5
+"c:\Users\user\Desktop\项目\chat-frontend\src\services\contact\index.ts", "TypeScript", 0, 0, 0, 0, 3, 2, 1, 6
+"c:\Users\user\Desktop\项目\chat-frontend\src\services\index.ts", "TypeScript", 0, 0, 0, 0, 0, 1, 0, 1
+"c:\Users\user\Desktop\项目\chat-frontend\src\services\search\index.ts", "TypeScript", 0, 0, 0, 0, 26, 0, 5, 31
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\APP.css", "CSS", 0, 0, 0, 0, 0, 0, 2, 2
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\APP.tsx", "TypeScript JSX", 0, 91, 0, 0, 0, 0, -1, 90
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\add\index.tsx", "TypeScript JSX", 0, 5, 0, 0, 0, 0, 2, 7
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\contact\index.tsx", "TypeScript JSX", 0, 18, 0, 0, 0, 0, 2, 20
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\more_apps\index.tsx", "TypeScript JSX", 0, 24, 0, 0, 0, 0, -1, 23
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\notification\index.tsx", "TypeScript JSX", 0, 26, 0, 0, 0, 0, -1, 25
+"c:\Users\user\Desktop\项目\chat-frontend\src\views\self\index.tsx", "TypeScript JSX", 0, 33, 0, 0, 0, 0, -1, 32
+"Total", "-", 1, 746, -12, 3, 27, 42, 25, 832

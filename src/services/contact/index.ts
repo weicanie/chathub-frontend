@@ -12,6 +12,10 @@ export async function friendAdd(data: AddFriend) {
 	return axiosInstance.post('/friendship/add', data);
 }
 
+export async function friendDel(id: number) {
+	return axiosInstance.post(`/friendship/remove/${id}`);
+}
+
 export async function friendRequestList() {
 	return axiosInstance.get('/friendship/request_list');
 }
@@ -25,6 +29,8 @@ export async function rejectFriendRequest(id: number) {
 }
 
 export async function chatroomList(name?: string) {
+	//不传name（''）：查询用户所有聊天房间
+	//传name：限制名字中带有name
 	return axiosInstance.get(`/chatroom/list?name=${name ? name : ''}`);
 }
 

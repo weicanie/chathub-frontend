@@ -14,7 +14,7 @@ interface SearchGroup {
 	name: string;
 }
 
-export interface GroupSearchResult {
+interface GroupSearchResult {
 	id: number;
 	name: string;
 	type: boolean;

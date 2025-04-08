@@ -7,14 +7,14 @@ export interface MembersModalProps {
 	isOpen: boolean;
 	chatroomId: number;
 	handleClose: () => void;
-	queryKey: string;
+	queryKey?: string;
 }
 
 interface User {
 	id: number;
 	username: string;
 	nickName: string;
-	headPic: string;
+	avatar_url: string;
 	email: string;
 }
 
@@ -62,7 +62,7 @@ export function MembersModal(props: MembersModalProps) {
 			dataIndex: 'headPic',
 			render: (_, record) => (
 				<div>
-					<img src={record.headPic} width={50} height={50} />
+					<img src={record.avatar_url} width={50} height={50} />
 				</div>
 			)
 		},

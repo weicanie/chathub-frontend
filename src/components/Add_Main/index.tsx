@@ -1,19 +1,10 @@
-import { MenuProps } from 'antd';
 import cs from 'classnames';
-import { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { ReactNode, useState } from 'react';
 import styled from 'styled-components';
-const items: MenuProps['items'] = [
-	{
-		key: '1',
-		label: '好友'
-	},
-	{
-		key: '2',
-		label: '群聊'
-	}
-];
-const ContactWrapper = styled.div`
+import Create from '../TopBar/Create';
+import SearchBar from '../TopBar/searchBar';
+
+const Wrapper = styled.div`
 	display: flex;
 	width: 1000px;
 	height: 900px;
@@ -27,30 +18,16 @@ const ContactWrapper = styled.div`
 	.show-contact {
 		width: ${1000 - 256}px;
 		background-color: rgb(245, 246, 247);
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 `;
-function Contact() {
+function AddMain() {
 	const [curKey, setCurkey] = useState('1');
-	const navigate = useNavigate();
-
-	useEffect(() => {
-		let path = '';
-		switch (curKey) {
-			case '1':
-				path = 'contact/friend';
-				break;
-			case '2':
-				path = 'contact/group';
-				break;
-		}
-		navigate(path);
-	}, [curKey]);
-
-	useEffect(() => {
-		if (location.pathname === '/contact') navigate('contact/friend');
-	}, []);
+	const [card, setCard] = useState<ReactNode>('');
 	return (
-		<ContactWrapper>
+		<Wrapper>
 			<div className="menu-contact">
 				<div role="tablist" className="tabs tabs-border pl-12">
 					<a
@@ -68,11 +45,12 @@ function Contact() {
 						群聊
 					</a>
 				</div>
-				{/* 嵌套路由 */}
-				<Outlet></Outlet>
+				<Create></Create>
+				<SearchBar curKey={curKey} setCard={setCard}></SearchBar>
 			</div>
-			<div className="show-contact"></div>
-		</ContactWrapper>
+
+			<div className="show-contact">{card}</div>
+		</Wrapper>
 	);
 }
-export default Contact;
+export default AddMain;

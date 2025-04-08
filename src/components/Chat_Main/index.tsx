@@ -43,12 +43,6 @@ type Reply =
 			userId: number;
 	  };
 
-interface Chatroom {
-	id: number;
-	name: string;
-	create_at: Date;
-}
-
 interface ChatHistory {
 	id: number;
 	content: string;
@@ -57,6 +51,14 @@ interface ChatHistory {
 	senderId: number;
 	create_at: Date;
 	sender: UserInfo;
+}
+
+interface Chatroom {
+	id: number;
+	name: string;
+	create_at: Date;
+	lastMessage: ChatHistory;
+	type: boolean; //是否是群聊
 }
 
 export interface User {
@@ -77,8 +79,12 @@ export function ChatMain() {
 	//@ts-ignore
 	const socketRef = useRef<Socket>();
 	const [roomId, setChatroomId] = useState<number>();
-	const userInfo = getUserInfo();
 	const [isUploadModalOpen, setUploadModalOpen] = useState(false);
+	const userInfo = getUserInfo();
+
+	const [roomList, setRoomList] = useState<Array<Chatroom>>([]);
+
+	const [chatHistory, setChatHistory] = useState<Array<ChatHistory>>();
 
 	useEffect(() => {
 		if (!roomId) {
@@ -129,8 +135,7 @@ export function ChatMain() {
 		socketRef.current?.emit('sendMessage', payload);
 	}
 
-	const [roomList, setRoomList] = useState<Array<Chatroom>>();
-
+	//获取房间列表
 	async function queryChatroomList() {
 		try {
 			const res = await chatroomList();
@@ -149,19 +154,23 @@ export function ChatMain() {
 			message.error(e.response?.data?.message || '系统繁忙，请稍后再试');
 		}
 	}
-
 	useEffect(() => {
 		queryChatroomList();
 	}, []);
-
+	//自动打开第一个房间
+	useEffect(() => {
+		if (roomList.length > 0) {
+			queryChatHistoryList(roomList[0].id);
+			setChatroomId(roomList[0].id);
+		}
+	}, [roomList]);
+	//自动滚动到消息列表末尾
 	useEffect(() => {
 		setTimeout(() => {
 			document.getElementById('bottom-bar')?.scrollIntoView({ block: 'end' });
 		}, 300);
 	}, [roomId]);
-
-	const [chatHistory, setChatHistory] = useState<Array<ChatHistory>>();
-
+	//获取房间内的消息列表
 	async function queryChatHistoryList(chatroomId: number) {
 		try {
 			const res = await chatHistoryList(chatroomId);
@@ -180,18 +189,17 @@ export function ChatMain() {
 			message.error(e.response?.data?.message || '系统繁忙，请稍后再试');
 		}
 	}
-	const [inputText, setInputText] = useState('');
 
 	const location = useLocation();
-
 	useEffect(() => {
 		if (location.state?.chatroomId) {
 			setChatroomId(location.state?.chatroomId);
-
 			queryChatHistoryList(location.state?.chatroomId);
 		}
 	}, [location.state?.chatroomId]);
-
+	//输入框（受控模式）
+	const [inputText, setInputText] = useState('');
+	//双击收藏消息
 	async function addToFavorite(chatHistoryId: number) {
 		try {
 			const res = await favoriteAdd(chatHistoryId);
@@ -205,33 +213,54 @@ export function ChatMain() {
 	}
 
 	const [uploadType, setUploadType] = useState<'image' | 'file'>('image');
+
 	return (
 		<Wrapper>
 			<div id="chat-container">
+				{/* 房间列表 */}
 				<div className="chat-room-list">
-					{roomList?.map(item => {
-						return (
-							<div className="room-item-container" key={item.id}>
-								<div
-									className={`chat-room-item ${item.id === roomId ? 'selected' : ''}`}
-									key={item.id}
-									data-id={item.id}
-									onClick={() => {
-										queryChatHistoryList(item.id);
-										setChatroomId(item.id);
-									}}
-								>
-									<div className="avatar avatar-placeholder">
-										<div className=" bg-indigo-900 text-neutral-content w-10 rounded-full">
-											<span className="text-3xl">{item.name.substring(0, 1)}</span>
+					<ul className="list bg-base-100  shadow-md">
+						{roomList?.map(item => {
+							return (
+								<div className="room-item-container" key={item.id}>
+									<div
+										className={`chat-room-item ${item.id === roomId ? 'selected' : ''}`}
+										data-id={item.id}
+										onClick={() => {
+											queryChatHistoryList(item.id);
+											setChatroomId(item.id);
+										}}
+									>
+										{/* <div className="avatar avatar-placeholder">
+											<div className=" bg-indigo-900 text-neutral-content w-10 rounded-full">
+												<span className="text-3xl">{item.name.substring(0, 1)}</span>
+											</div>
 										</div>
+										{item.name} */}
+										<li className="list-row">
+											<div className="avatar avatar-placeholder">
+												<div className=" bg-neutral text-neutral-content w-10 rounded-full">
+													<span className="text-3xl">{item.name.substring(0, 1)}</span>
+												</div>
+											</div>
+											<div>
+												<div>{item.name}</div>
+												<div className="text-xs font-semibold opacity-60">
+													{`
+													${item.type ? item.lastMessage.sender.nickName + ': ' : ''}
+													${item.lastMessage.content.length > 13 ? item.lastMessage.content.slice(0, 10) + '...' : item.lastMessage.content}
+													`}
+												</div>
+											</div>
+											{/* <button className="btn btn-square btn-ghost">1</button> */}
+										</li>
 									</div>
-									{item.name}
 								</div>
-							</div>
-						);
-					})}
+							);
+						})}
+					</ul>
 				</div>
+				{/* 消息列表 */}
 				<div className="message-list">
 					{chatHistory?.map(item => {
 						return (
@@ -254,7 +283,7 @@ export function ChatMain() {
 									<div className="chat-header">
 										{item.sender.nickName}
 										<time className="text-xs opacity-50">
-											{new Date(item.create_at).toLocaleDateString()}
+											{new Date(item.create_at).toLocaleString()}
 										</time>
 									</div>
 									<div
@@ -282,6 +311,7 @@ export function ChatMain() {
 					})}
 					<div id="bottom-bar" key="bottom-bar"></div>
 				</div>
+				{/* 输入框 */}
 				<div className="message-input">
 					<div className="message-type">
 						<div className="message-type-item" key={1}>

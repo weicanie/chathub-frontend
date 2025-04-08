@@ -1,12 +1,11 @@
 import { Group } from '@/components/Group';
 import { Navigate } from 'react-router-dom';
 import { Friendship } from '../components/Friendship';
+import Add from '../views/add';
 import Chat from '../views/chat';
 import Contact from '../views/contact';
-import Login from '../views/login';
 import MoreApps from '../views/more_apps';
 import Notification from '../views/notification';
-import Regist from '../views/regist';
 import Self from '../views/self';
 const routes = [
 	{
@@ -44,12 +43,20 @@ const routes = [
 		element: <MoreApps />
 	},
 	{
-		path: 'regist',
-		element: <Regist />
-	},
-	{
-		path: 'login',
-		element: <Login />
+		path: 'add',
+		element: <Add />
 	}
+	// {
+	// 	path: 'register',
+	// 	element: <Regist />
+	// },
+	// {
+	// 	path: 'login',
+	// 	element: <Login />
+	// },
+	// {
+	// 	path: 'update_password',
+	// 	element: <UpdatePassword />
+	// }
 ];
 export default routes;

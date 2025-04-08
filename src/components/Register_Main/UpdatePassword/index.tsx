@@ -1,7 +1,7 @@
 import { Button, Form, Input, message } from 'antd';
 import { useForm } from 'antd/es/form/Form';
 import { useNavigate } from 'react-router-dom';
-import { updatePassword, updatePasswordCaptcha } from '../../services/self';
+import { updatePassword, updatePasswordCaptcha } from '../../../services/self';
 import './index.css';
 
 export interface UpdatePassword {
@@ -30,7 +30,10 @@ export function UpdatePassword() {
 			if (res.status === 201 || res.status === 200) {
 				message.success('密码修改成功');
 				setTimeout(() => {
-					navigate('/login');
+					//@ts-ignore
+					document.getElementById('updatepw_modal').close();
+					//@ts-ignore
+					document.getElementById('login_modal').showModal();
 				}, 1500);
 			}
 		} catch (e: any) {
@@ -57,7 +60,7 @@ export function UpdatePassword() {
 
 	return (
 		<div id="updatePassword-container">
-			<h1>聊天室</h1>
+			{/* <h1>聊天室</h1> */}
 			<Form form={form} {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"

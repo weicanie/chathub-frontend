@@ -26,6 +26,9 @@ importers:
       axios:
         specifier: ^1.7.2
         version: 1.8.4
+      classnames:
+        specifier: ^2.5.1
+        version: 2.5.1
       daisyui:
         specifier: ^5.0.12
         version: 5.0.12

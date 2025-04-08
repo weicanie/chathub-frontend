@@ -1,4 +1,4 @@
-import { InboxOutlined } from '@ant-design/icons';
+import { FileAddFilled } from '@ant-design/icons';
 import { message } from 'antd';
 import Dragger, { DraggerProps } from 'antd/es/upload/Dragger';
 import axios from 'axios';
@@ -45,9 +45,9 @@ const props: DraggerProps = {
 const dragger = (
 	<Dragger {...props}>
 		<p className="ant-upload-drag-icon">
-			<InboxOutlined />
+			<FileAddFilled style={{ color: 'gray' }} />
 		</p>
-		<p className="ant-upload-text">点击或拖拽文件到这个区域来上传</p>
+		<p className="ant-upload-text"></p>
 	</Dragger>
 );
 

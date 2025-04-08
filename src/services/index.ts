@@ -18,6 +18,7 @@ axiosInstance.interceptors.request.use(function (config) {
 axiosInstance.interceptors.response.use(
 	response => {
 		const newToken = response.headers['token'];
+		//token无感刷新
 		if (newToken) {
 			localStorage.setItem('token', newToken);
 		}
@@ -30,9 +31,9 @@ axiosInstance.interceptors.response.use(
 		let { data } = error.response;
 		if (data.statusCode === 401) {
 			message.error(data.message);
-
 			setTimeout(() => {
-				window.location.href = '/login';
+				//@ts-ignore
+				document.getElementById('login_modal').showModal();
 			}, 1500);
 		} else {
 			return Promise.reject(error);

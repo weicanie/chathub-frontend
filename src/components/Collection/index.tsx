@@ -1,7 +1,8 @@
-import { Popconfirm, Table, message } from 'antd';
+import { Popconfirm, message } from 'antd';
 import { ColumnsType } from 'antd/es/table';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import { favoriteDel, queryFavoriteList } from '../../services/favor';
+import { User } from '../Chat_Main';
 
 interface Favorite {
 	id: number;
@@ -11,11 +12,12 @@ interface Favorite {
 		type: number;
 		create_at: Date;
 	};
+	sender: User;
 }
 
 export function Collection() {
 	const [favoriteList, setFavoriteList] = useState<Array<Favorite>>([]);
-
+	console.log('🚀 ~ Collection ~ favoriteList:', favoriteList);
 	const columns: ColumnsType<Favorite> =
 		favoriteList.length > 0
 			? [
@@ -102,12 +104,43 @@ export function Collection() {
 	useEffect(() => {
 		query();
 	}, []);
+	//FIXME 收藏删除功能异常：无法收藏
+	function favoriteListItem(favoriteList: Array<Favorite>) {
+		const toMeList: ReactNode[] = [];
+		for (let i = 0; i < favoriteList.length; i++) {
+			const record = favoriteList[i];
+			toMeList.push(
+				<li className="list-row">
+					<div>
+						<img className="size-10 rounded-box" src={record.sender.avatar_url} />
+					</div>
+					<div>
+						<div>{record.sender.nickName}</div>
+						<div className="text-xs uppercase font-semibold opacity-60">
+							{new Date(record.chatHistory.create_at).toLocaleString()}
+						</div>
+					</div>
+					<p className="list-col-wrap text-xs">{record.chatHistory.content}</p>
+					<button className="btn btn-square btn-secondary" onClick={() => delFavorite(record.id)}>
+						删除
+					</button>
+				</li>
+			);
+		}
+		return toMeList;
+	}
 
 	return (
-		<div id="friendship-container">
+		<>
+			{/* <div id="friendship-container">
 			<div className="favorite-table">
 				<Table columns={columns} dataSource={favoriteList} style={{ width: '1000px' }} />
 			</div>
-		</div>
+		</div> */}
+			<ul className="list bg-base-100  shadow-md">
+				<li className="p-4 pb-2 text-xs opacity-60 tracking-wide">收藏</li>
+				{favoriteListItem(favoriteList)}
+			</ul>
+		</>
 	);
 }

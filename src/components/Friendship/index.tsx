@@ -4,8 +4,8 @@ import { ColumnsType } from 'antd/es/table';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createOneToOne, findChatroom, friendshipList } from '../../services/contact';
-import ContactList from '../ContactList';
 import { AddFriendModal } from './AddFriendModal';
+import ContactList from './ContactList';
 import './index.css';
 
 interface User {

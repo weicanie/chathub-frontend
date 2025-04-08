@@ -1,7 +1,6 @@
 import { register, registerCaptcha } from '@/services/regist';
 import { Button, Form, Input, message } from 'antd';
 import { useForm } from 'antd/es/form/Form';
-import { useNavigate } from 'react-router-dom';
 import './index.css';
 
 export interface RegisterUser {
@@ -24,6 +23,7 @@ const layout2 = {
 };
 
 export function RegisterMain() {
+	console.log('first');
 	const [form] = useForm();
 
 	async function sendCaptcha() {
@@ -42,8 +42,6 @@ export function RegisterMain() {
 		}
 	}
 
-	const navigate = useNavigate();
-
 	const onFinish = async (values: RegisterUser) => {
 		if (values.password !== values.confirmPassword) {
 			return message.error('两次密码不一致');
@@ -54,7 +52,10 @@ export function RegisterMain() {
 			if (res.status === 201 || res.status === 200) {
 				message.success('注册成功');
 				setTimeout(() => {
-					navigate('/login');
+					//@ts-ignore
+					document.getElementById('regist_modal').close();
+					//@ts-ignore
+					document.getElementById('login_modal').showModal();
 				}, 1000);
 			}
 		} catch (e: any) {
@@ -64,7 +65,7 @@ export function RegisterMain() {
 
 	return (
 		<div id="register-container">
-			<h1>聊天室</h1>
+			{/* <h1>注册</h1> */}
 			<Form form={form} {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"
@@ -124,7 +125,17 @@ export function RegisterMain() {
 
 				<Form.Item {...layout2}>
 					<div className="links">
-						已有账号？去<a href="/login">登录</a>
+						已有账号？去
+						<a
+							onClick={() => {
+								//@ts-ignore
+								document.getElementById('regist_modal').close();
+								//@ts-ignore
+								document.getElementById('login_modal').showModal();
+							}}
+						>
+							登录
+						</a>
 					</div>
 				</Form.Item>
 

@@ -2,8 +2,9 @@ import type { MenuProps } from 'antd';
 import { Menu, message } from 'antd';
 import React, { ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { friendshipList } from '../../services/contact';
-import { FriendshipSearchResult } from '../Friendship';
+
+import { FriendshipSearchResult } from '..';
+import { friendshipList } from '../../../services/contact';
 import FiriendCard from './FiriendCard';
 
 const Wrapper = styled.div`
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
 	position: relative;
 	.card-container {
 		position: absolute;
-		left: 400px;
+		left: 490px;
 	}
 `;
 
@@ -62,8 +63,9 @@ const ContactList: React.FC = () => {
 				let cnt = 1; //生成 key
 				const finalItems: {
 					key: string;
-					label: string;
+					label: ReactNode;
 					icon: ReactNode;
+					theme?: string;
 					children: { key: string; label: ReactNode }[];
 				}[] = [];
 				for (let groupName of [
@@ -84,13 +86,24 @@ const ContactList: React.FC = () => {
 				const infosFromKey: InfosWithKey[] = [];
 				for (let i = 0; i < groupItems.length; i++) {
 					for (let friend of groupItems[i]) {
-						finalItems[i].children.push({ key: '' + cnt, label: friend.nickName });
+						finalItems[i].children.push({
+							key: '' + cnt,
+							label: (
+								<div className="flex justify-start items-center">
+									<div className="avatar">
+										<div className="w-8 h-8 rounded">
+											<img src={friend?.avatar_url} />
+										</div>
+									</div>
+									<div className="ml-3">{friend.nickName}</div>
+								</div>
+							)
+						});
 						infosFromKey.push({ ...friend, key: '' + cnt });
 						cnt++;
 					}
 				}
-				console.log('finalItems', finalItems);
-				console.log('infosFromKey', infosFromKey);
+
 				setFriendItems(finalItems);
 				setInfosFromKey(infosFromKey);
 				setFriendshipResult(

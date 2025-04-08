@@ -15,17 +15,18 @@ const Wrapper = styled.div`
 		position: relative;
 
 		.chat-room-list {
-			width: ${roomListWidth}px;
+			width: ${256}px;
 			border-left: 1.5px solid rgb(244, 244, 244);
 			height: 100%;
 			overflow-y: auto;
+			background-color: #fff;
 
 			#room-item-container {
-				display: flex;
+				/* display: flex; */
 			}
 			.chat-room-item {
-				height: ${rooItemHeight}px;
-				line-height: ${rooItemHeight}px;
+				/* height: ${rooItemHeight}px; */
+				/* line-height: ${rooItemHeight}px; */
 				padding-left: 20px;
 				cursor: pointer;
 

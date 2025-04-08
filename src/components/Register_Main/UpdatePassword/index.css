@@ -1,7 +1,11 @@
 #updatePassword-container {
+	padding: 50px 70px 50px 10px;
 	width: 400px;
+	height: 450px;
 	margin: 100px auto 0 auto;
 	text-align: center;
+	background-color: #fff;
+	border-radius: 10px;
 }
 #updatePassword-container .btn {
 	width: 100%;

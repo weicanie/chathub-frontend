@@ -32,6 +32,8 @@ export function LoginMain() {
 
 				setTimeout(() => {
 					navigate('/');
+					//@ts-ignore
+					document.getElementById('login_modal').close();
 				}, 1000);
 			}
 		} catch (e: any) {
@@ -41,7 +43,7 @@ export function LoginMain() {
 
 	return (
 		<div id="login-container">
-			<h1>聊天室</h1>
+			{/* <h1>登录</h1> */}
 			<Form {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"
@@ -61,8 +63,26 @@ export function LoginMain() {
 
 				<Form.Item {...layout2}>
 					<div className="links">
-						<a href="/register">创建账号</a>
-						<a href="/update_password">忘记密码</a>
+						<a
+							onClick={() => {
+								//@ts-ignore
+								document.getElementById('login_modal').close();
+								//@ts-ignore
+								document.getElementById('regist_modal').showModal();
+							}}
+						>
+							创建账号
+						</a>
+						<a
+							onClick={() => {
+								//@ts-ignore
+								document.getElementById('login_modal').close();
+								//@ts-ignore
+								document.getElementById('updatepw_modal').showModal();
+							}}
+						>
+							忘记密码
+						</a>
 					</div>
 				</Form.Item>
 
