@@ -1,6 +1,7 @@
 import axiosInstance from '..';
 
 export async function queryFavoriteList() {
+	console.log('发出请求！');
 	return axiosInstance.get(`/favorite/list`);
 }
 

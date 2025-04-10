@@ -98,7 +98,7 @@ export function ChatMain() {
 			};
 
 			socket.emit('joinRoom', payload);
-
+			//* 消息发送到房间： 客户端 -'sendMessage'>服务器  服务器 -'message'>客户端
 			socket.on('message', (reply: Reply) => {
 				if (reply.type === 'sendMessage') {
 					setChatHistory(chatHistory => {
@@ -114,7 +114,7 @@ export function ChatMain() {
 			socket.disconnect();
 		};
 	}, [roomId]);
-
+	//*通过socket发送消息到房间中
 	function sendMessage(value: string, type: MessageType = 'text') {
 		if (!value) {
 			return;
@@ -154,6 +154,7 @@ export function ChatMain() {
 			message.error(e.response?.data?.message || '系统繁忙，请稍后再试');
 		}
 	}
+
 	useEffect(() => {
 		queryChatroomList();
 	}, []);
@@ -247,8 +248,14 @@ export function ChatMain() {
 												<div>{item.name}</div>
 												<div className="text-xs font-semibold opacity-60">
 													{`
-													${item.type ? item.lastMessage.sender.nickName + ': ' : ''}
-													${item.lastMessage.content.length > 13 ? item.lastMessage.content.slice(0, 10) + '...' : item.lastMessage.content}
+													${item.type ? (item.lastMessage ? item.lastMessage.sender.nickName + ': ' : '') : ''}
+													${
+														item.lastMessage
+															? item.lastMessage.content.length > 13
+																? item.lastMessage.content.slice(0, 10) + '...'
+																: item.lastMessage.content
+															: '暂无消息'
+													}
 													`}
 												</div>
 											</div>

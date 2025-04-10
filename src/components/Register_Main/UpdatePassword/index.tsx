@@ -60,7 +60,7 @@ export function UpdatePassword() {
 
 	return (
 		<div id="updatePassword-container">
-			{/* <h1>聊天室</h1> */}
+			<h1>修改密码</h1>
 			<Form form={form} {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"

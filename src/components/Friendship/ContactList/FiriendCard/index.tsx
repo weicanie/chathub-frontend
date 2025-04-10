@@ -39,7 +39,7 @@ function FiriendCard(props: Props) {
 	console.log('info', info);
 	return (
 		<>
-			<div className="card bg-success  w-66" id="contactList-card">
+			<div className="card bg-white  w-66" id="contactList-card">
 				<div className="card-body items-center text-center">
 					<div className="avatar">
 						<div className="w-24 rounded">

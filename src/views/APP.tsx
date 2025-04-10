@@ -26,6 +26,18 @@ const AppWrapper = styled.div`
 	left: 50%;
 	transform: translate(-50%);
 
+	//设置menu的样式
+	.menu-antd-chat {
+		li:nth-child(1) {
+			padding-left: 25px;
+		}
+		li {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
 	.window-container {
 		#menu-container {
 			display: flex;
@@ -201,6 +213,7 @@ function APP() {
 							defaultSelectedKeys={getSelectedKeys()}
 							items={items}
 							onClick={handleMenuItemClick}
+							className="menu-antd-chat"
 						/>
 					</div>
 					{/* 第一层路由 */}

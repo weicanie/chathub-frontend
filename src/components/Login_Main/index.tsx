@@ -43,7 +43,7 @@ export function LoginMain() {
 
 	return (
 		<div id="login-container">
-			{/* <h1>登录</h1> */}
+			<h1>登录</h1>
 			<Form {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"

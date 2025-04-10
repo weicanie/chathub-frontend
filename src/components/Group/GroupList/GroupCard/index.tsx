@@ -33,7 +33,7 @@ function GroupCard(props: Props) {
 				/>
 			)}
 
-			<div className="card bg-success  w-66" id="contactList-card">
+			<div className="card bg-white  w-66" id="contactList-card">
 				<div className="card-body items-center text-center">
 					<div className=" bg-neutral text-neutral-content w-10 rounded-full">
 						<span className="text-3xl">{info?.name.substring(0, 1)}</span>

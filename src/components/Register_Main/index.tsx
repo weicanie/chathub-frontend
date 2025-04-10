@@ -23,7 +23,6 @@ const layout2 = {
 };
 
 export function RegisterMain() {
-	console.log('first');
 	const [form] = useForm();
 
 	async function sendCaptcha() {
@@ -65,7 +64,7 @@ export function RegisterMain() {
 
 	return (
 		<div id="register-container">
-			{/* <h1>注册</h1> */}
+			<h1>注册</h1>
 			<Form form={form} {...layout1} onFinish={onFinish} colon={false} autoComplete="off">
 				<Form.Item
 					label="用户名"

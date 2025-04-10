@@ -3,20 +3,21 @@ import { Dispatch, PropsWithChildren, ReactNode, SetStateAction, useEffect, useS
 import { addMember, friendAdd } from '../../services/contact';
 import { GroupResult, searchGroup, searchUser, UserResult } from '../../services/search';
 import wei_ls from '../../utils/wei_ls';
+
 type Props = PropsWithChildren<{
 	curKey: string;
 	setCard: Dispatch<SetStateAction<ReactNode>>;
 }>;
 
 function SearchBar({ curKey, setCard }: Props) {
-	console.log('🚀 ~ SearchBar ~ curKey:', curKey);
+	const [name, setName] = useState<string>('');
+
 	const [groupResult, setGroupResult] = useState<Array<GroupResult>>([]);
 	const [userResult, setUserResult] = useState<Array<UserResult>>([]);
-	const [name, setName] = useState<string>('');
+
 	const [userIndex, setUserIndex] = useState<number>(-1);
-	console.log('🚀 ~ SearchBar ~ userIndex:', userIndex);
 	const [groupIndex, setGroupIndex] = useState<number>(-1);
-	console.log('🚀 ~ SearchBar ~ groupIndex:', groupIndex);
+
 	//根据名字搜索群聊、用户
 	const getGroupList = async () => {
 		try {
@@ -65,7 +66,7 @@ function SearchBar({ curKey, setCard }: Props) {
 			if (userIndex === -1) return;
 			const info: UserResult = userResult[userIndex];
 			setCard(
-				<div className="card bg-success  w-66" id="contactList-card">
+				<div className="card bg-white  w-66" id="contactList-card">
 					<div className="card-body items-center text-center">
 						<div className="avatar">
 							<div className="w-24 rounded">
@@ -81,7 +82,7 @@ function SearchBar({ curKey, setCard }: Props) {
 			if (groupIndex === -1) return;
 			const info: GroupResult = groupResult[groupIndex];
 			setCard(
-				<div className="card bg-success  w-66" id="contactList-card">
+				<div className="card bg-white  w-66" id="contactList-card">
 					<div className="card-body items-center text-center">
 						<div className=" bg-neutral text-neutral-content w-24 h-24 rounded-full">
 							<span className="text-3xl">{info?.name.substring(0, 1)}</span>
