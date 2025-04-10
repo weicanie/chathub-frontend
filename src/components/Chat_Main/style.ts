@@ -85,7 +85,7 @@ const Wrapper = styled.div`
 
 		.message-input {
 			background-color: rgb(245, 246, 247);
-			width: ${messageListWidth}px;
+			width: ${742}px;
 			border-top: 1.5px solid rgb(234, 234, 234);
 
 			height: ${inputBarHeight}px;

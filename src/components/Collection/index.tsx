@@ -26,8 +26,8 @@ export function Collection() {
 	}, shallowEqual);
 
 	useEffect(() => {
-		//store中已有则组件重新挂载时不请求
-		if (favoriteList.length > 0) return;
+		// TODO store中已有则组件重新挂载时不请求（会导致收藏后不再更新）
+		// if (favoriteList.length > 0) return;
 		dispatch(favorAsyncAction());
 	}, [favoriteList.length]);
 

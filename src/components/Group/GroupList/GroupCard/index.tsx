@@ -19,7 +19,6 @@ function GroupCard(props: Props) {
 	const navigate = useNavigate();
 
 	console.log('info', info);
-	//TODO 跳转聊天时同步侧边栏状态,redux
 	//FIXME create_at字段定义成Date类型, 但其是string,需要new Date()
 	return (
 		<>

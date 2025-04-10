@@ -203,7 +203,7 @@ export function FRNotification() {
 
 	async function agree(id: number) {
 		try {
-			const res = await agreeFriendRequest(id); //FIXME id为空
+			const res = await agreeFriendRequest(id);
 
 			if (res.status === 201 || res.status === 200) {
 				message.success('操作成功');

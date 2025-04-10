@@ -1,8 +1,9 @@
 import { Button, Form, Input, message } from 'antd';
 import { useForm } from 'antd/es/form/Form';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import { getUserInfo, updateInfo, updateUserInfoCaptcha } from '../../services/self';
+import { appContext } from '../../views/APP';
 import { HeadPicUpload } from './HeadPicUpload';
 
 export interface UserInfo {
@@ -69,6 +70,8 @@ export function UpdateInfo() {
 					info.nickName = values.nickName;
 
 					localStorage.setItem('userInfo', JSON.stringify(info));
+					const { setHeadPic } = useContext(appContext);
+					setHeadPic(values.headPic);
 				}
 			}
 		} catch (e: any) {

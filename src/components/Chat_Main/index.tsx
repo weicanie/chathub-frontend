@@ -232,12 +232,6 @@ export function ChatMain() {
 											setChatroomId(item.id);
 										}}
 									>
-										{/* <div className="avatar avatar-placeholder">
-											<div className=" bg-indigo-900 text-neutral-content w-10 rounded-full">
-												<span className="text-3xl">{item.name.substring(0, 1)}</span>
-											</div>
-										</div>
-										{item.name} */}
 										<li className="list-row">
 											<div className="avatar avatar-placeholder">
 												<div className=" bg-neutral text-neutral-content w-10 rounded-full">
@@ -252,7 +246,7 @@ export function ChatMain() {
 													${
 														item.lastMessage
 															? item.lastMessage.content.length > 13
-																? item.lastMessage.content.slice(0, 10) + '...'
+																? item.lastMessage.content.slice(0, 7) + '...'
 																: item.lastMessage.content
 															: '暂无消息'
 													}
@@ -294,7 +288,7 @@ export function ChatMain() {
 										</time>
 									</div>
 									<div
-										className={`chat-bubble ${item.senderId === userInfo.id ? 'chat-bubble-secondary' : 'chat-bubble-info'}`}
+										className={`chat-bubble ${item.senderId === userInfo.id ? 'chat-bubble-accent' : 'chat-bubble-info'}`}
 									>
 										{' '}
 										{/* 三种类型的消息 */}

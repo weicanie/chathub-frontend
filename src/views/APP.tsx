@@ -1,5 +1,5 @@
 import { Menu as AntdMenu, MenuProps } from 'antd';
-import { useEffect, useState } from 'react';
+import { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { useNavigate, useRoutes } from 'react-router-dom';
 import styled from 'styled-components';
 import { LoginMain } from '../components/Login_Main';
@@ -50,8 +50,14 @@ const AppWrapper = styled.div`
 	}
 `;
 
+type AppContext = {
+	setHeadPic: Dispatch<SetStateAction<string>>;
+};
+
+export const appContext = createContext<AppContext>({ setHeadPic: () => {} });
+//TODO 跳转聊天时同步边栏
 function APP() {
-	const [headPic, setHeadPic] = useState();
+	const [headPic, setHeadPic] = useState('');
 
 	useEffect(() => {
 		const userInfo = localStorage.getItem('userInfo');
@@ -217,7 +223,9 @@ function APP() {
 						/>
 					</div>
 					{/* 第一层路由 */}
-					<div className="content-area">{useRoutes(routes)}</div>
+					<appContext.Provider value={{ setHeadPic }}>
+						<div className="content-area">{useRoutes(routes)}</div>
+					</appContext.Provider>
 				</div>
 			</div>
 			{/* 登录、注册、修改密码弹出的modal */}

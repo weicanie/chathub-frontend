@@ -42,7 +42,7 @@ const props: DraggerProps = {
 	}
 };
 
-const dragger = (
+export const dragger = (
 	<Dragger {...props}>
 		<p className="ant-upload-drag-icon">
 			<FileAddFilled style={{ color: 'gray' }} />
